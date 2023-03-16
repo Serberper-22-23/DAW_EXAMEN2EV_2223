@@ -2,7 +2,7 @@
 
 namespace LotoClassNS
 {
-    // Clase que almacena una combinación de la lotería
+    /// <summary>  Clase que almacena una combinación de la lotería</summary> 
     //
     public class LotoSBP2223
     {
@@ -29,12 +29,12 @@ namespace LotoClassNS
 
             int i=0, j, num;
 
-            do             /// <remarks> Generamos la combinación </remarks>
+            do             /// <summary> Generamos la combinación </summary>
             {                       
                 num = Aleatorio.Next(NUMERO_MENOR, NUMERO_MAYOR + 1);     ///<summary> generamos un número aleatorio del 1 al 49 </summary>
                     if (Nums[j]==num)
                         break;
-                if (i==j)               ///<summary> Si i==j, el número no se ha encontrado en la lista, lo añadimos </summary>
+                if (i==j)               ///<returns> Si i==j, el número no se ha encontrado en la lista, lo añadimos </returns>
                 {
                     Nums[i]=num;
                     i++;
@@ -43,10 +43,10 @@ namespace LotoClassNS
 
             ok=true;
         }
-
-        // La segunda forma de crear una combinación es pasando el conjunto de números
-        // misNumeros es un array de enteros con la combinación que quiero crear (no tiene porqué ser válida)
-        public Loto(int[] misNumeros)  // misNumeros: combinación con la que queremos inicializar la clase
+         /// <summary> Método Loto segundo </summary>
+        /// <remarks>La segunda forma de crear una combinación es pasando el conjunto de números </remarks>
+        /// <remarks>misNumeros es un array de enteros con la combinación que quiero crear (no tiene porqué ser válida)</remarks>
+        public Loto(int[] misNumeros)  ///<param name="misNumeros"> combinación con la que queremos inicializar la clase </remarks>
         {
             for (int i=0; i<MAX_NUMEROS; i++)
                 if (misNumeros[i]>=NUMERO_MENOR && misNumeros[i]<=NUMERO_MAYOR) {
@@ -55,7 +55,7 @@ namespace LotoClassNS
                         if (misNumeros[i]==Nums[j])
                             break;
                     if (i==j)
-                        Nums[i]=misNumeros[i]; // validamos la combinación
+                        Nums[i]=misNumeros[i]; ///<summary> validamos la combinación</summary>
                     else {
                         ok=false;
                         return;
@@ -63,15 +63,15 @@ namespace LotoClassNS
                 }
                 else
                 {
-                    ok=false;     // La combinación no es válida, terminamos
+                    ok=false;     ///<returns> La combinación no es válida, terminamos</returns>
                     return;
                 }
 	    ok=true;
         }
 
-        // Método que comprueba el número de aciertos
-        // premi es un array con la combinación ganadora
-        // se devuelve el número de aciertos
+        ///<summary> Método que comprueba el número de aciertos</summary> 
+        /// <remarks>premi es un array con la combinación ganadora</remarks>
+        /// <return> se devuelve el número de aciertos</return> 
         public int Comprobar(int[] premi)
         {
             int aciertos=0;                    // número de aciertos
