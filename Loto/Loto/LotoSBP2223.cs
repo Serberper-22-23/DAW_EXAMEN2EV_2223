@@ -12,17 +12,20 @@ namespace LotoClassNS
         public const int NUMERO_MAYOR = 49;
         
         private int[] _nums = new int[MAX_NUMEROS];   // numeros de la combinación
-        public bool ok = false;      // combinación válida (si es aleatoria, siempre es válida, si no, no tiene porqué)
+        private bool ok = false;      // combinación válida (si es aleatoria, siempre es válida, si no, no tiene porqué)
+
+        public bool ok { get=>ok;set=>ok=value}
 
         public int[] Nums { 
             get => _nums; 
             set => _nums = value; 
         }
 
-        /// <summary> Método Loto primero </summary>
+        /// <summary> Constructor Loto primero </summary>
         /// <remarks>  En el caso de que el constructor sea vacío, se genera una combinación aleatoria correcta </remarks>
         //
         public Loto()
+
         {
             /// <param name="Aleatorio"> Clase generadora de números aleatorios </param>
             Random Aleatorio = new Random();    
@@ -43,7 +46,7 @@ namespace LotoClassNS
 
             ok=true;
         }
-         /// <summary> Método Loto segundo </summary>
+         /// <summary> Método Loto  </summary>
         /// <remarks>La segunda forma de crear una combinación es pasando el conjunto de números </remarks>
         /// <remarks>misNumeros es un array de enteros con la combinación que quiero crear (no tiene porqué ser válida)</remarks>
         public Loto(int[] misNumeros)  ///<param name="misNumeros"> combinación con la que queremos inicializar la clase </remarks>
@@ -66,7 +69,7 @@ namespace LotoClassNS
                     ok=false;     ///<returns> La combinación no es válida, terminamos</returns>
                     return;
                 }
-	    ok=true;
+	         ok=true;
         }
 
         ///<summary> Método que comprueba el número de aciertos</summary> 
