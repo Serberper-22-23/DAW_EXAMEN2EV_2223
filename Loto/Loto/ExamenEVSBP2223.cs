@@ -11,7 +11,7 @@ using LotoClassNS;
 
 namespace ExamenLoto
 {
-    public partial class Form1 : Form
+    public partial class ExamenEVSBP2223 : Form
     {
         public loto miLoto, miGanadora;
         private TextBox[] combinacion = new TextBox[6]; // Estos arrays se usan para recorrer de manera más sencilla los controles

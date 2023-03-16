@@ -4,7 +4,7 @@ namespace LotoClassNS
 {
     // Clase que almacena una combinación de la lotería
     //
-    public class loto
+    public class LotoSBP2223
     {
         // definición de constantes
         public const int MAX_NUMEROS = 6;
@@ -19,21 +19,22 @@ namespace LotoClassNS
             set => _nums = value; 
         }
 
-        // En el caso de que el constructor sea vacío, se genera una combinación aleatoria correcta
+        /// <summary> Método Loto primero </summary>
+        /// <remarks>  En el caso de que el constructor sea vacío, se genera una combinación aleatoria correcta </remarks>
         //
-        public loto()
+        public Loto()
         {
-            Random r = new Random();    // clase generadora de números aleatorios
+            /// <param name="Aleatorio"> Clase generadora de números aleatorios </param>
+            Random Aleatorio = new Random();    
 
             int i=0, j, num;
 
-            do             // generamos la combinación
+            do             /// <remarks> Generamos la combinación </remarks>
             {                       
-                num = r.Next(NUMERO_MENOR, NUMERO_MAYOR + 1);     // generamos un número aleatorio del 1 al 49
-                for (j=0; j<i; j++)    // comprobamos que el número no está
+                num = Aleatorio.Next(NUMERO_MENOR, NUMERO_MAYOR + 1);     ///<summary> generamos un número aleatorio del 1 al 49 </summary>
                     if (Nums[j]==num)
                         break;
-                if (i==j)               // Si i==j, el número no se ha encontrado en la lista, lo añadimos
+                if (i==j)               ///<summary> Si i==j, el número no se ha encontrado en la lista, lo añadimos </summary>
                 {
                     Nums[i]=num;
                     i++;
@@ -44,17 +45,17 @@ namespace LotoClassNS
         }
 
         // La segunda forma de crear una combinación es pasando el conjunto de números
-        // misnums es un array de enteros con la combinación que quiero crear (no tiene porqué ser válida)
-        public loto(int[] misnums)  // misnumeros: combinación con la que queremos inicializar la clase
+        // misNumeros es un array de enteros con la combinación que quiero crear (no tiene porqué ser válida)
+        public Loto(int[] misNumeros)  // misNumeros: combinación con la que queremos inicializar la clase
         {
             for (int i=0; i<MAX_NUMEROS; i++)
-                if (misnums[i]>=NUMERO_MENOR && misnums[i]<=NUMERO_MAYOR) {
+                if (misNumeros[i]>=NUMERO_MENOR && misNumeros[i]<=NUMERO_MAYOR) {
                     int j;
                     for (j=0; j<i; j++) 
-                        if (misnums[i]==Nums[j])
+                        if (misNumeros[i]==Nums[j])
                             break;
                     if (i==j)
-                        Nums[i]=misnums[i]; // validamos la combinación
+                        Nums[i]=misNumeros[i]; // validamos la combinación
                     else {
                         ok=false;
                         return;
@@ -71,13 +72,13 @@ namespace LotoClassNS
         // Método que comprueba el número de aciertos
         // premi es un array con la combinación ganadora
         // se devuelve el número de aciertos
-        public int comprobar(int[] premi)
+        public int Comprobar(int[] premi)
         {
-            int a=0;                    // número de aciertos
+            int aciertos=0;                    // número de aciertos
             for (int i=0; i<MAX_NUMEROS; i++)
                 for (int j=0; j<MAX_NUMEROS; j++)
-                    if (premi[i]==Nums[j]) a++;
-            return a;
+                    if (premi[i]==Nums[j]) aciertos++;
+            return aciertos;
         }
     }
 
